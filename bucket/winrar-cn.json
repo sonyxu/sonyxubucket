@@ -17,7 +17,8 @@
             "hash": "6cd558c0986412043fcd79be308a1262b152f66d0a921c5147e80603af2800a3"
         }
     },
-    "pre_install": "if (!(Test-Path \"$persist_dir\\rarreg.key\")) { \"RAR registration data
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\rarreg.key\")) { \"RAR registration data
 WinRAR
 Unlimited Company License
 UID=4b914fb772c8376bf571
@@ -28,6 +29,8 @@ b41bcf56929486b8bcdac33d50ecf773996052598f1f556defffbd
 982fbe71e93df6b6346c37a3890f3c7edc65d7f5455470d13d1190
 6e6fb824bcf25f155547b5fc41901ad58c0992f570be1cf5608ba9
 aef69d48c864bcd72d15163897773d314187f6a9af350808719796\"| Out-File \"$dir\\rarreg.key\" }",
+        "if (!(Test-Path \"$persist_dir\\WinRar.ini\")) { New-Item \"$dir\\WinRar.ini\" | Out-Null }"
+    ],
     "bin": [
         "Rar.exe",
         "UnRAR.exe",
@@ -39,7 +42,11 @@ aef69d48c864bcd72d15163897773d314187f6a9af350808719796\"| Out-File \"$dir\\rarre
             "WinRAR"
         ]
     ],
-    "persist": "rarreg.key",
+    "persist": [
+        "rarreg.key",
+        "WinRar.ini",
+        "Themes"
+    ],
     "checkver": "WinRAR and RAR ([\\d.]+) release",
     "autoupdate": {
         "architecture": {
