@@ -47,14 +47,15 @@ aef69d48c864bcd72d15163897773d314187f6a9af350808719796\"| Out-File \"$dir\\rarre
         "WinRar.ini",
         "Themes"
     ],
-    "checkver": "WinRAR and RAR ([\\d.]+) release",
+    "checkver": {
+        "url": "https://siku-api.deno.dev/winrar",
+        "jsonpath": "$.combined-ymd",
+        "regex": "([\\d\\.]+)-(?<date>[\\d]+)"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://www.rarlab.com/rar/winrar-x64-$cleanVersion.exe#/dl.7z"
-            },
-            "32bit": {
-                "url": "https://www.rarlab.com/rar/wrar$cleanVersion.exe#/dl.7z"
+                "url": "https://www.win-rar.com/fileadmin/winrar-versions/sc/sc$matchDate/wrr/winrar-x64-$cleanVersionsc.exe#/dl.7z"
             }
         }
     }
