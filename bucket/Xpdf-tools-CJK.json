@@ -60,10 +60,17 @@
     "persist": "xpdfrc",
     "checkver": {
         "url": "https://www.xpdfreader.com/download.html",
-        "regex": "Current version:\\s*([^\\s<]+)"
+        "regex": "Current version:\\s*(?<version>[\\d.]+).*Chinese/simplified.*\\[updated (?<Sc>[^\\]]+)\\].*Chinese/traditional.*\\[updated (?<St>[^\\]]+)\\].*Japanese.*\\[updated (?<Jp>[^\\]]+)\\].*Korean.*\\[updated (?<Kr>[^\\]]+)\\]"
     },
     "autoupdate": {
-        "url": "https://dl.xpdfreader.com/xpdf-tools-win-$version.zip",
-        "extract_dir": "xpdf-tools-win-$version"
+        "url": [
+            "https://dl.xpdfreader.com/xpdf-tools-win-$matchversion.zip",
+            "https://dl.xpdfreader.com/xpdf-t1fonts.tar.gz",
+            "https://dl.xpdfreader.com/xpdf-chinese-simplified.tar.gz#$matchSc",
+            "https://dl.xpdfreader.com/xpdf-chinese-traditional.tar.gz#$matchSt",
+            "https://dl.xpdfreader.com/xpdf-japanese.tar.gz#$matchJp",
+            "https://dl.xpdfreader.com/xpdf-korean.tar.gz#$matchKr"
+        ],
+        "extract_dir": "xpdf-tools-win-$matchversion"
     }
 }
