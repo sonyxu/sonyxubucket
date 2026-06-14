@@ -19,7 +19,10 @@
             "Remove-Item -Path HKCU:/Software/Mathpix"
         ]
     },
-    "checkver": "download.mathpix.com/windows/mathpix_snipping_tool_setup.v([\\d.]+).exe",
+    "checkver": {
+        "url": "https://mathpix.com/win_app/version.json",
+        "jsonpath": "$.version"
+    },
     "autoupdate": {
         "url": "https://download.mathpix.com/windows/mathpix_snipping_tool_setup.v$version.exe"
     }
